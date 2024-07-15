@@ -1,0 +1,269 @@
+/*滚动条的整体样式*/
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+
+/*滚动条的轨道部分*/
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/*滚动条的滑块*/
+::-webkit-scrollbar-thumb {
+  background-color: #CCCCCC;
+  border-radius: 8px;
+}
+
+/*导航栏简化*/
+.layout-Header.headerSimplify .HeaderGif-left,
+.layout-Header.headerSimplify .HeaderGif-right,
+.layout-Header.headerSimplify .HeaderNav,
+.layout-Header.headerSimplify .Header-left .Header-menu-link:not(:first-child,:last-child),
+.layout-Header.headerSimplify .Header-right > :not(.Header-search-wrap,.Header-follow-wrap,.Header-login-wrap) {
+  display: none;
+}
+
+/*隐藏左侧边栏*/
+.pageSimplify .layout-Aside {
+  display: none;
+}
+
+/*隐藏右侧活动*/
+.pageSimplify #js-room-activity,
+.pageSimplify #webmActKefuWeidget {
+  display: none;
+}
+
+/*隐藏页面背景*/
+.pageSimplify .wm-general {
+  height: 0 !important;
+  margin: 0 !important;
+}
+
+.pageSimplify .wm-general .wm-general-wrapper {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.pageSimplify .wm-general .wm-view,
+.pageSimplify .layout-Bottom,
+.pageSimplify #newbtn,
+.pageSimplify .bc-wrapper:not(.bc-wrapper-player) {
+  display: none !important;
+}
+
+.pageSimplify .wm-general .bc-wrapper-player {
+  padding-top: 70px;
+}
+
+/*鼠标悬停穿透弹幕*/
+#room-html5-player.penetrate [class^=danmuItem-] {
+  cursor: default;
+  pointer-events: none;
+}
+
+#room-html5-player.barrageSimplify [class^=danmuItem-] :not([class^=text],[class^=super-text]) {
+  display: none;
+}
+
+#room-html5-player.barrageSimplify [class^=danmuItem-] [class^=super-text] {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  background-image: none !important;
+}
+
+/*礼物栏简化*/
+.layout-Player-toolbar.giftSimplify .ToolbarActivityArea {
+  display: none;
+}
+
+/*聊天框头部简化*/
+.layout-Player-aside.chatSimplify .layout-Player-asideMainTop > :not(.layout-Player-rank,.layout-Player-barrage) {
+  display: none;
+}
+
+/*去除排行榜详情,只留下tab*/
+.layout-Player-aside.chatSimplify .layout-Player-asideMainTop .layout-Player-rank,
+.layout-Player-aside.chatSimplify .layout-Player-asideMainTop .layout-Player-rank .ChatRank {
+  height: auto;
+}
+
+/*去除排行榜详情*/
+.layout-Player-aside.chatSimplify .layout-Player-asideMainTop .layout-Player-rank .ChatTabContainer-conWraper {
+  display: none;
+}
+
+/*设置聊天框弹幕样式*/
+.layout-Player-aside .layout-Player-barrage .Barrage-listItem {
+  margin: 4px;
+  padding: 4px 0;
+  background-color: white;
+  border-radius: 4px;
+}
+
+/*去掉有些弹幕带有的上下内边距*/
+.layout-Player-aside .layout-Player-barrage .Barrage-listItem .Barrage--paddedBarrage {
+  padding: 0 10px;
+}
+
+/*去除弹幕自带的背景颜色*/
+.layout-Player-aside .layout-Player-barrage .Barrage-listItem > div:not(.HighEnergyV2Barrage) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+/*聊天框弹幕简化*/
+.layout-Player-aside.barrageSimplify .layout-Player-barrage .Barrage-listItem > div > :not([class$=notice],[class^=HighEnergy],[class*=EntranceIntroduce],.Barrage-icon--roomAdmin,.Barrage-nickName,.Barrage-content,.Barrage-text,.Barrage-EntranceIntroduce),
+.layout-Player-aside.barrageSimplify .layout-Player-barrage .QBHotBarrage {
+  display: none
+}
+
+/* 房间信息 */
+.Title-row .room-data {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.Title-row .room-data > span {
+  margin-right: 8px
+}
+
+:root {
+  --white: #DDDDDD;
+  --black: #1F2020;
+  --gray: #3C3C3C;
+  --gray-light: #5C5C5C;
+}
+
+.dark body,
+.dark .public-DropMenu-drop,
+.dark .ActiviesExpandPanel,
+.dark .GiftExpandPanel,
+.dark .GiftInfoPanel-cont,
+.dark .HighEnergyBarrageContainer {
+  background-color: var(--gray);
+}
+
+.dark .Header-wrap,
+.dark .layout-Player-title,
+.dark .layout-Player-toolbar,
+.dark .layout-Player-asideMain,
+.dark .layout-Player-barrage,
+.dark .layout-Player-chat,
+.dark .layout-Player-announce .VideoEntry-list,
+.dark .layout-Player-rank .ChatRank-rankWraper,
+.dark .layout-Player-rank .ChatTabContainer-titleWraper--tabLi,
+.dark .layout-Player-rank .NobleRank,
+.dark .layout-Player-barrage .HighEnergyV2Barrage.is-blue,
+.dark .layout-Player-barrage .HighEnergyV2Barrage.is-red,
+.dark .layout-Player-barrage .HighEnergyV2Barrage.is-yellow,
+.dark .layout-Bottom .AnchorLike-friendList,
+.dark .layout-Bottom .AnchorFriend-footer a {
+  background-color: var(--black) !important;
+}
+
+.dark .layout-Player-title,
+.dark .layout-Player-toolbar,
+.dark .layout-Player-chat {
+  background-image: none !important;
+}
+
+.dark .Header-wrap .Search-hotList li:hover,
+.dark .Header-wrap .Search-recommend:hover,
+.dark .Header-wrap .DropPaneList > a:hover,
+.dark .layout-Player-announce .VideoAnchorItem:hover {
+  background-color: var(--gray-light);
+}
+
+.dark .Header-wrap .Header-icon,
+.dark .Header-wrap .Header-menu-link > a,
+.dark .Header-wrap .Header-menu-link .public-DropMenu-link,
+.dark .Header-wrap .public-DropMenu-link,
+.dark .Header-wrap .DropMenuList-name,
+.dark .Header-wrap .contentTitle,
+.dark .Header-wrap .videoTitle,
+.dark .Header-wrap .omnibusTitle,
+.dark .Header-wrap .Game-item,
+.dark .Header-wrap .Search-hotList a:first-child,
+.dark .Header-wrap .Search-recommend-info h3,
+.dark .Header-wrap .Search-recommend-info p,
+.dark .Header-wrap .DropPaneList-title,
+.dark .Header-wrap .DropPaneList-name,
+.dark .Header-wrap .DropPaneList-live,
+.dark .Header-wrap .DropPaneList-hot,
+.dark .Header-wrap .DropPaneList-time,
+.dark .Header-wrap .Exit-btn,
+.dark .Header-wrap .User-nickname a,
+.dark .Header-wrap .Wallet-content-mywallet-title,
+.dark .Header-wrap .Wallet-content-mywallet-wealth-sliver,
+.dark .Header-wrap .Wallet-content-mywallet-wealth-sliver span,
+.dark .Header-wrap .Wallet-content-mywallet-wealth-gold,
+.dark .Header-wrap .Wallet-content-mywallet-wealth-gold span,
+.dark .Header-wrap .HeaderTask-title,
+.dark .Header-wrap .HeaderTask-taskName,
+.dark .Header-wrap .Shortcut-listItem-link,
+.dark .layout-Player-title .Title-row-icon,
+.dark .layout-Player-title .Title-header,
+.dark .layout-Player-title .Title-report,
+.dark .layout-Player-title .Title-categoryItem,
+.dark .layout-Player-title .Title-followNum,
+.dark .layout-Player-title .Title-anchorName,
+.dark .layout-Player-title .Title-anchorText,
+.dark .layout-Player-title .Title-row-text,
+.dark .layout-Player-title .room-data,
+.dark .layout-Player-announce .VideoAnchorItem-title,
+.dark .layout-Player-announce .ideoAnchorItem-date,
+.dark .layout-Player-announce .VideoReplayItem-date,
+.dark .layout-Player-rank .ChatRankWeek-listItem--nickname,
+.dark .layout-Player-rank .NobleRankList-nickName,
+.dark .layout-Player-rank .DiamondsFansRankList-nickName,
+.dark .layout-Player-rank .DiamondsFansRankInfo-txt,
+.dark .layout-Player-barrage .Barrage-EntranceIntroduce-Content,
+.dark .layout-Player-barrage .Barrage-content,
+.dark .layout-Player-barrage .Barrage-text,
+.dark .layout-Player-toolbar .GiftInfoPanel-name,
+.dark .layout-Player-toolbar .PlayerToolbar-wealthNum,
+.dark .layout-Bottom .VideoBottomTabs span,
+.dark .layout-Bottom .AnchorFriendPane-title a,
+.dark .layout-Bottom .AnchorFriendPane-title h3,
+.dark .layout-Bottom .AnchorFriendCard-info h3,
+.dark .layout-Bottom .AnchorFriend-footer a {
+  color: var(--white);
+}
+
+.dark .layout-Player-announce {
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.dark .layout-Player-rank .ChatRankWeek-headerContent,
+.dark .layout-Player-rank .ChatRankWeek-listItem--index,
+.dark .layout-Player-rank .NobleRankTips,
+.dark .layout-Player-rank .DiamondsFansRankInfo,
+.dark .layout-Player-rank .DiamondsFansRankList-itemRank,
+.dark .layout-Player-chat .ChatSend-txt,
+.dark .layout-Player-barrage .Barrage-listItem {
+  color: var(--white);
+  background-color: var(--gray);
+}
+
+.dark .layout-Player-title,
+.dark .layout-Player-toolbar,
+.dark .layout-Player-toolbar .GiftInfoPanel-cont,
+.dark .layout-Player-asideMain,
+.dark .layout-Player-rank,
+.dark .layout-Player-rank .ChatRank-rankWraper,
+.dark .layout-Player-rank .ChatTabContainer-titleWraper--tabLi,
+.dark .layout-Bottom .AnchorLike-ItemBox {
+  border: none;
+}
+
+/*下方鱼吧样式,ifame页面无法直接修改*/
+.dark .layout-Bottom .Bottom-yubaIframe {
+  padding: 12px;
+  background-color: white;
+  border-radius: 8px;
+  filter: brightness(0.7);
+}

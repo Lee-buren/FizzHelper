@@ -1,0 +1,92 @@
+:root {
+  --white: #DDDDDD;
+  --black: #1F2020;
+  --gray: #3C3C3C;
+  --gray-light: #5C5C5C;
+}
+
+.dark .pageheader [class^=dropdown],
+.dark .pagemain [class^=postCardWrapper],
+.dark .pagemain [class^=dropdownmenu],
+.dark .pagemain [class^=vote],
+.dark .mantine-Menu-dropdown {
+  background-color: var(--gray) !important;
+}
+
+.dark .pageheader,
+.dark .pagemain [class^=description],
+.dark .pagemain nav,
+.dark .pagemain section [class^=main],
+.dark .pagemain [class^=postCard_],
+.dark .pagemain [class^=postCardComment],
+.dark .pagemain [class^=commentPublish],
+.dark .pagemain [class^=commentBottom],
+.dark .pagemain [class^=holder],
+.dark .pagemain [class^=editor],
+.dark .pagemain [class^=userCard],
+.dark .pagemain [class^=recommend],
+.dark .pagemain [class^=hotTopic],
+.dark .pagemain [class^=hotGroup],
+.dark .pagemain [class^=bg],
+.dark .pagemain [class^=emptyCard],
+.dark .pagemain [class^=commentLoading] {
+  background-color: var(--black) !important;
+}
+
+.dark .pagemain [class^=operation] [class^=icon] path:first-child:not([fill-rule]) {
+  fill: var(--black);
+}
+
+.dark .pageheader [class^=headerlink],
+.dark .pageheader [class^=submenugrouptitle],
+.dark .pageheader [class^=rightlink],
+.dark .pageheader [class^=msglink],
+.dark .pageheader [class^=username],
+.dark .pageheader [class^=logout],
+.dark .pageheader [class^=menu],
+.dark .pagemain [class^=summary],
+.dark .pagemain [class^=navitem],
+.dark .pagemain [class^=dropdownitem],
+.dark .pagemain [class^=pluginItem],
+.dark .pagemain [class^=pluginItem] svg,
+.dark .pagemain [class^=normal],
+.dark .pagemain [class^=postCardBody],
+.dark .pagemain [class^=bottomAction] span,
+.dark .pagemain .mantine-Checkbox-label,
+.dark .pagemain [class^=commentTitle],
+.dark .pagemain [class^=textNode],
+.dark .pagemain [class^=operation] [class^=icon],
+.dark .pagemain [class^=showCommentText],
+.dark .pagemain span[class^=title],
+.dark .pagemain [class^=title],
+.dark .pagemain [class^=livingtxt],
+.dark .pagemain [class^=manager],
+.dark .pagemain [class^=request],
+.dark .pagemain [class^=nickname],
+.dark .pagemain [class^=voteTitle] span,
+.dark .pagemain [class^=attenItem] strong,
+.dark .pagemain [class^=header],
+.dark .pagemain [class^=nick],
+.dark .pagemain [class^=topic],
+.dark .pagemain [class^=groupAnchor],
+.dark .mantine-Menu-itemLabel {
+  color: var(--white) !important;
+}
+
+.dark .pagemain [class^=topTagHead],
+.dark .pagemain [class^=voteItem],
+.dark .repost,
+.dark .repost::before {
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.dark .pagemain [class^=topTagHead],
+.dark .pagemain [class^=hotCommentList],
+.dark .pagemain [class^=commentBottom] {
+  border: none;
+}
+
+.dark .mantine-Menu-item:hover {
+  background-color: var(--gray-light) !important;
+}
