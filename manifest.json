@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "description": "简化播放界面,适配暗黑模式",
   "icons": {
-    "16": "icons/斗鱼TV-16.png",
-    "32": "icons/斗鱼TV-32.png",
-    "48": "icons/斗鱼TV-48.png",
-    "128": "icons/斗鱼TV-128.png"
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
   },
   "permissions": [
     "storage"
@@ -30,7 +30,9 @@
         "https://www.douyu.com/9*",
         "https://yuba.douyu.com/*"
       ],
-      "css": [ "src/style.css" ],
+      "css": [
+        "src/style.css"
+      ],
       "run_at": "document_start"
     },
     {
@@ -44,18 +46,12 @@
         "https://www.douyu.com/6*",
         "https://www.douyu.com/7*",
         "https://www.douyu.com/8*",
-        "https://www.douyu.com/9*"
+        "https://www.douyu.com/9*",
+        "https://yuba.douyu.com/*"
       ],
-      "js": [ "src/content_player.js" ]
-    },
-    {
-      "matches": [ "https://yuba.douyu.com/*" ],
-      "css": [ "src/yuba.css" ],
-      "run_at": "document_start"
-    },
-    {
-      "matches": [ "https://yuba.douyu.com/*" ],
-      "js": [ "src/content_yuba.js" ]
+      "js": [
+        "src/content_player.js"
+      ]
     }
   ],
   "background": {

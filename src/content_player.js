@@ -18,13 +18,14 @@ dyMenu.append(menuWrapper);
 const style = document.createElement('style');
 style.setAttribute('type', 'text/css');
 style.innerHTML =
-  `#dy-helper-menu {position: fixed;top: 50%;right: 0;transform: translateY(-50%);z-index: 999;}#dy-helper-menu .menu-wrapper {position: absolute;top: 0;bottom: 0;right: -240px;margin: auto 0;padding: 12px;height: fit-content;background-color: wheat;border: 1px solid #00B7AE;border-radius: 4px;opacity: 0;z-index: 999;transition: all 0.2s;}#dy-helper-menu:hover .menu-wrapper {opacity: 1;transform: translateX(-240px);}#dy-helper-menu .menu-wrapper > button {display: block;padding: 4px 8px;margin: 0 auto 8px;color: #00B7AE;background: #FFFFFF;border: 1px solid #00B7AE;text-align: center;border-radius: 4px;cursor: pointer;user-select: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;transition: all 0.3s;}#dy-helper-menu .menu-wrapper > button:last-of-type {margin-bottom: 0}#dy-helper-menu .menu-wrapper > button:hover {filter: brightness(0.9);}#dy-helper-menu .menu-wrapper > button.checked {color: #FFFFFF;background-color: #00B7AE;}`;
+  `#dy-helper-menu {position: fixed;top: 50%;right: 0;transform: translateY(-50%);z-index: 999;}#dy-helper-menu .menu-wrapper {position: absolute;top: 0;bottom: 0;right: -240px;margin: auto 0;padding: 12px;height: fit-content;background-color: wheat;border: 1px solid #00B7AE;border-radius: 4px;opacity: 0;z-index: 999;transition: all 0.2s ease-out;}#dy-helper-menu:hover .menu-wrapper {opacity: 1;transform: translateX(-240px);}#dy-helper-menu .menu-wrapper > button {display: block;padding: 4px 8px;margin: 0 auto 8px;color: #00B7AE;background: #FFFFFF;border: 1px solid #00B7AE;text-align: center;border-radius: 4px;cursor: pointer;user-select: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;transition: all 0.2s;}#dy-helper-menu .menu-wrapper > button:last-of-type {margin-bottom: 0}#dy-helper-menu .menu-wrapper > button:hover {filter: brightness(0.9);}#dy-helper-menu .menu-wrapper > button.checked {color: #FFFFFF;background-color: #00B7AE;}`;
 
 shadowDOM.append(dyMenu, style);
 document.body.append(container);
 
 let roomDataTimer = null;  // 获取房间信息的计时器
 const Get_RoomData_Interval = 12 * 60 * 1000; // 获取房间信息的间隔
+
 // 用户默认配置 name 显示名称 description 描述 checked 是否选中 action 点击事件 delay 首次执行延迟时间
 const defaultConfig = {
   fullPageAuto: {
@@ -44,7 +45,7 @@ const defaultConfig = {
     checked: true,
     delay: 0,
     onChange: (value) => {
-      document.querySelector('.layout-Header').classList[value ? 'add' : 'remove']('headerSimplify');
+      document.querySelector('.layout-Header')?.classList[value ? 'add' : 'remove']('headerSimplify');
     },
   },
   pageSimplify: {
@@ -54,7 +55,7 @@ const defaultConfig = {
     delay: 0,
     onChange: (value) => {
       document.body.classList[value ? 'add' : 'remove']('pageSimplify');
-      document.querySelector('.layout-Player').scrollIntoView(false);
+      document.querySelector('.layout-Player')?.scrollIntoView(false);
     },
   },
   barrageHover: {
@@ -83,7 +84,7 @@ const defaultConfig = {
     checked: true,
     delay: 0,
     onChange: (value) => {
-      document.querySelector('.layout-Player-toolbar').classList[value ? 'add' : 'remove']('giftSimplify');
+      document.querySelector('.layout-Player-toolbar')?.classList[value ? 'add' : 'remove']('giftSimplify');
     },
   },
   chatSimplify: {
@@ -91,8 +92,8 @@ const defaultConfig = {
     description: '去除主播公告、贡献周榜、贵宾、粉丝团和主播通知',
     checked: true,
     delay: 0,
-    onChange: async (value) => {
-      document.querySelector('.layout-Player-aside').classList[value ? 'add' : 'remove']('chatSimplify');
+    onChange: (value) => {
+      document.querySelector('.layout-Player-aside')?.classList[value ? 'add' : 'remove']('chatSimplify');
     },
   },
   nameplateShow: {
@@ -100,11 +101,10 @@ const defaultConfig = {
     description: '聊天框用户铭牌是否显示',
     checked: false,
     delay: 0,
-    onChange: async (value) => {
-      document.querySelector('.layout-Player-aside').classList[value ? 'remove' : 'add']('barrageSimplify');
+    onChange: (value) => {
+      document.querySelector('.layout-Player-aside')?.classList[value ? 'remove' : 'add']('barrageSimplify');
     },
   },
-
   roomDataShow: {
     name: '房间数据显示',
     description: '显示房间数据(时间范围今天00:00到今晚24:00),12分钟刷新数据一次',
@@ -125,14 +125,14 @@ const defaultConfig = {
     description: '暗黑模式',
     checked: false,
     delay: 0,
-    onChange: async (value) => {
+    onChange: (value) => {
       document.documentElement.classList[value ? 'add' : 'remove']('dark');
     },
   },
 };
 
 // 显示房间数据 
-function getRoomData () {
+function getRoomData() {
   const [, roomId] = location.pathname.split('/');
   const rid = new URLSearchParams(location.search).get('rid') ?? roomId ?? null;
   chrome.runtime.sendMessage({ type: 'roomData', rid });
@@ -140,7 +140,7 @@ function getRoomData () {
 
 // 遍历默认配置创建按钮列表
 for (const key in defaultConfig) {
-  const { name, description, checked, delay, onChange } = defaultConfig[key];
+  const { name, description, checked, delay: defaultDelay, onChange } = defaultConfig[key];
   chrome.storage.local.get().then(async (res) => {
     const localChecked = res[key] ?? checked;
     // 存储默认配置
@@ -151,15 +151,20 @@ for (const key in defaultConfig) {
     const className = key + (localChecked ? ' checked' : '');
     menuWrapper.innerHTML += `<button class="${ className }" title="${ description }">${ name }</button>`;
 
+    const delay = location.hostname.includes('yuba') ? 500 : defaultDelay;
     // 载入时执行一次change事件
-    if (delay) {
-      setTimeout(() => {
-        onChange(localChecked);
-        defaultConfig[key].delay = 0;
-      }, delay);
-    } else {
+    setTimeout(() => {
       onChange(localChecked);
-    }
+      defaultConfig[key].delay = 0;
+    }, delay);
+    // if (delay) {
+    //   setTimeout(() => {
+    //     onChange(localChecked);
+    //     defaultConfig[key].delay = 0;
+    //   }, delay);
+    // } else {
+    //   onChange(localChecked);
+    // }
   });
 }
 
@@ -179,13 +184,12 @@ menuWrapper.addEventListener('click', async (e) => {
 // 监听存储变化
 chrome.storage.onChanged.addListener((changes) => {
   for (const [key, { newValue }] of Object.entries(changes)) {
-    const { onChange } = defaultConfig[key];
-    onChange(newValue);
+    defaultConfig[key]?.onChange(newValue);
   }
 });
 
 // 监听消息
-chrome.runtime.onMessage.addListener((message) => {
+chrome.runtime.onMessage.addListener(async (message) => {
   if (message.type === 'roomData') {
     const {
       'gift.all.price': giftAllPrice = 0,
@@ -211,22 +215,24 @@ chrome.runtime.onMessage.addListener((message) => {
       ['付费人数', giftPaidUv],
     ];
     const lastTitleRow = document.querySelector('.Title-row:last-child');
-    lastTitleRow.innerHTML =
-      `<div class="room-data">
+    if (lastTitleRow) {
+      lastTitleRow.innerHTML =
+        `<div class="room-data">
           ${ firstRows.map(row => `<span>${ row[0] }：<strong>${ row[1] }</strong></span>`).join('') }
           </br>
           ${ secondRows.map(row => `<span>${ row[0] }：<strong>${ row[1] }</strong></span>`).join('') }
       </div>`;
+    }
   }
 });
 
 // 金钱格式化
-function formatPrice (price) {
+function formatPrice(price) {
   if (!price && Number.isNaN(+price)) return 0;
   return (price / 100).toFixed(2);
 }
 
-async function getDomAsync (str) {
+async function getDomAsync(str) {
   const selector = await new Promise((resolve) => {
     setTimeout(() => {
       const selectors = document.querySelectorAll(str);

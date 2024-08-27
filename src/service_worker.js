@@ -3,14 +3,19 @@ function getRoomData (rid) {
   return fetch('https://www.doseeing.com/xeee/room/aggr', {
     method: 'POST',
     body: `{ "m": "${ btoa(`rid=${ rid }&dt=0`).split('').reverse().join('') }" }`,
-    headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
   });
 }
 
 chrome.runtime.onMessage.addListener(async (message, sender) => {
-  if (message.type === 'roomData') {
-    const { data } = await (await getRoomData(message.rid)).json();
-    console.log(await chrome.windows.getAll());
-    chrome.tabs.sendMessage(sender.tab.id, { type: 'roomData', data });
-  }
-});
+    if (message.type === 'roomData') {
+      const { data } = await (await getRoomData(message.rid)).json();
+      chrome.tabs.sendMessage(sender.tab.id, {
+        type: 'roomData',
+        data,
+      });
+    }
+  },
+);

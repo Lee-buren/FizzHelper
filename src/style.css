@@ -63,11 +63,16 @@
   pointer-events: none;
 }
 
-#room-html5-player.barrageSimplify [class^=danmuItem-] :not([class^=text],[class^=super-text]) {
+#room-html5-player.barrageSimplify [class^="danmuItem-"] :not([class^="text"], [class^="super-text"], [class="emoji"]) {
   display: none;
 }
 
-#room-html5-player.barrageSimplify [class^=danmuItem-] [class^=super-text] {
+#room-html5-player.barrageSimplify [class^=danmuItem-] {
+  background-color: transparent !important;
+}
+
+#room-html5-player.barrageSimplify [class^=danmuItem-] [class^=super-text],
+#room-html5-player.barrageSimplify [class^=danmuItem-] .highEnergySuperBarrageText {
   font-size: 18px !important;
   font-weight: 700 !important;
   background-image: none !important;
@@ -142,7 +147,12 @@
 .dark .ActiviesExpandPanel,
 .dark .GiftExpandPanel,
 .dark .GiftInfoPanel-cont,
-.dark .HighEnergyBarrageContainer {
+.dark .HighEnergyBarrageContainer,
+.dark .pageheader [class^=dropdown],
+.dark .pagemain [class^=postCardWrapper],
+.dark .pagemain [class^=dropdownmenu],
+.dark .pagemain [class^=vote],
+.dark .layout-Player-chat .ChatSend-txt {
   background-color: var(--gray);
 }
 
@@ -160,20 +170,44 @@
 .dark .layout-Player-barrage .HighEnergyV2Barrage.is-red,
 .dark .layout-Player-barrage .HighEnergyV2Barrage.is-yellow,
 .dark .layout-Bottom .AnchorLike-friendList,
-.dark .layout-Bottom .AnchorFriend-footer a {
+.dark .layout-Bottom .AnchorFriend-footer a,
+.dark .pageheader,
+.dark .pagemain [class^=description],
+.dark .pagemain nav,
+.dark .pagemain [class^=main],
+.dark .pagemain [class^=feedDetail],
+.dark .pagemain [class^=titleBar],
+.dark .pagemain [class^=topFeedList],
+.dark .pagemain [class^=postCard_],
+.dark .pagemain [class^=postCardComment],
+.dark .pagemain [class^=commentPublish],
+.dark .pagemain [class^=commentBottom],
+.dark .pagemain [class^=holder],
+.dark .pagemain [class^=editor],
+.dark .pagemain [class^=userCard],
+.dark .pagemain [class^=recommend],
+.dark .pagemain [class^=hotTopic],
+.dark .pagemain [class^=hotGroup],
+.dark .pagemain [class^=bg],
+.dark .pagemain [class^=emptyCard],
+.dark .pagemain [class^=commentLoading] {
   background-color: var(--black) !important;
 }
 
 .dark .layout-Player-title,
 .dark .layout-Player-toolbar,
-.dark .layout-Player-chat {
+.dark .layout-Player-chat,
+.dark .DiamondsFansRankContainer,
+.dark .DiamondsFansRankContainer > i,
+.dark .layout-Player-announce {
   background-image: none !important;
 }
 
 .dark .Header-wrap .Search-hotList li:hover,
 .dark .Header-wrap .Search-recommend:hover,
 .dark .Header-wrap .DropPaneList > a:hover,
-.dark .layout-Player-announce .VideoAnchorItem:hover {
+.dark .layout-Player-announce .VideoAnchorItem:hover,
+.dark .mantine-Menu-item:hover {
   background-color: var(--gray-light);
 }
 
@@ -229,11 +263,50 @@
 .dark .layout-Bottom .AnchorFriendPane-title a,
 .dark .layout-Bottom .AnchorFriendPane-title h3,
 .dark .layout-Bottom .AnchorFriendCard-info h3,
-.dark .layout-Bottom .AnchorFriend-footer a {
+.dark .layout-Bottom .AnchorFriend-footer a,
+.dark .pageheader [class^=headerlink],
+.dark .pageheader [class^=submenugrouptitle],
+.dark .pageheader [class^=rightlink],
+.dark .pageheader [class^=msglink],
+.dark .pageheader [class^=username],
+.dark .pageheader [class^=logout],
+.dark .pageheader [class^=menu],
+.dark .pagemain [class^=summary],
+.dark .pagemain [class^=navitem],
+.dark .pagemain [class^=dropdownitem],
+.dark .pagemain [class^=pluginItem],
+.dark .pagemain [class^=pluginItem] svg,
+.dark .pagemain [class^=normal],
+.dark .pagemain [class^=postCardBody],
+.dark .pagemain [class^=bottomAction] span,
+.dark .pagemain .mantine-Checkbox-label,
+.dark .pagemain [class^=commentTitle],
+.dark .pagemain [class^=textNode],
+.dark .pagemain [class^=operation] [class^=icon],
+.dark .pagemain [class^=showCommentText],
+.dark .pagemain span[class^=title],
+.dark .pagemain [class^=title],
+.dark .pagemain [class^=livingtxt],
+.dark .pagemain [class^=manager],
+.dark .pagemain [class^=request],
+.dark .pagemain [class^=nickname],
+.dark .pagemain [class^=voteTitle] span,
+.dark .pagemain [class^=attenItem] strong,
+.dark .pagemain [class^=header],
+.dark .pagemain [class^=nick],
+.dark .pagemain [class^=topic],
+.dark .pagemain [class^=groupAnchor],
+.dark .pagemain [class^=topFeedList] [class^=content],
+.dark .pagemain [class^=main] [class^=back],
+.dark .mantine-Menu-itemLabel {
   color: var(--white);
 }
 
-.dark .layout-Player-announce {
+.dark .layout-Player-announce,
+.dark .pagemain [class^=topTagHead],
+.dark .pagemain [class^=voteItem],
+.dark .repost,
+.dark .repost::before {
   color: var(--white);
   background-color: var(--black);
 }
@@ -243,7 +316,6 @@
 .dark .layout-Player-rank .NobleRankTips,
 .dark .layout-Player-rank .DiamondsFansRankInfo,
 .dark .layout-Player-rank .DiamondsFansRankList-itemRank,
-.dark .layout-Player-chat .ChatSend-txt,
 .dark .layout-Player-barrage .Barrage-listItem {
   color: var(--white);
   background-color: var(--gray);
@@ -256,7 +328,10 @@
 .dark .layout-Player-rank,
 .dark .layout-Player-rank .ChatRank-rankWraper,
 .dark .layout-Player-rank .ChatTabContainer-titleWraper--tabLi,
-.dark .layout-Bottom .AnchorLike-ItemBox {
+.dark .layout-Bottom .AnchorLike-ItemBox,
+.dark .pagemain [class^=topTagHead],
+.dark .pagemain [class^=hotCommentList],
+.dark .pagemain [class^=commentBottom] {
   border: none;
 }
 
@@ -266,4 +341,12 @@
   background-color: white;
   border-radius: 8px;
   filter: brightness(0.7);
+}
+
+.dark .pagemain [class^=operation] [class^=icon] path:first-child:not([fill-rule]) {
+  fill: var(--black);
+}
+
+.dark .layout-Player-chat .ChatSend-txt {
+  color: var(--white) !important;
 }
