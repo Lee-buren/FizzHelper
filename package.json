@@ -1,0 +1,40 @@
+{
+  "name": "fizz",
+  "displayName": "Fizz直播助手",
+  "version": "0.2.0",
+  "description": "直播助手,提供一点小小的帮助",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "@plasmohq/messaging": "^0.6.2",
+    "@plasmohq/storage": "^1.12.0",
+    "ahooks": "^3.8.1",
+    "plasmo": "0.89.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.277",
+    "@types/react": "18.3.9",
+    "@types/react-dom": "18.3.0",
+    "prettier": "3.3.3",
+    "typescript": "5.6.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "^0.33.5"
+    }
+  },
+  "manifest": {
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "permissions": [
+      "storage"
+    ],
+    "web_accessible_resources": []
+  }
+}

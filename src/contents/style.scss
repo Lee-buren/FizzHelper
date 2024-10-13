@@ -1,0 +1,64 @@
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.fizz-helper-btn {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 9998;
+  width: 32px;
+  height: 32px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
+
+.fizz-helper-options {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+  padding: 8px;
+  z-index: 9999;
+  height: fit-content;
+  background-color: #f5deb3;
+  border: 1px solid #00b7ae;
+  border-radius: 4px;
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+}
+
+.fizz-helper-option {
+  display: block;
+  padding: 2px 4px;
+  margin: 0 auto 8px;
+  width: 120px;
+  color: #00b7ae;
+  background: #ffffff;
+  border: 1px solid #00b7ae;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    filter: brightness(90%);
+  }
+}
+
+.checked {
+  color: #ffffff;
+  background-color: #00b7ae;
+}
